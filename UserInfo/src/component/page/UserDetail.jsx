@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import { useNavigate, useParams } from "react-router-dom";
-import UserContext from "../hooks/useUserInfo";
 
 const UserDetail = () => {
     const navigate = useNavigate();
-    const { users, setUsers } = useContext(UserContext);
+
     const { userId } = useParams();
 
     const [updatedUser, setUpdatedUser] = useState({
@@ -16,15 +15,15 @@ const UserDetail = () => {
     });
 
     const deleteUser = () => {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
         const updatedUsers = users.filter(user => user.id !== parseInt(userId));
-        setUsers(updatedUsers);
         localStorage.setItem("users", JSON.stringify(updatedUsers));
         navigate("/");
     };
 
     const handleUpdateUser = () => {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
         const updatedUsers = users.map(user => (user.id === parseInt(userId) ? updatedUser : user));
-        setUsers(updatedUsers);
         localStorage.setItem("users", JSON.stringify(updatedUsers));
         alert("사용자 정보가 수정되었습니다.");
         navigate("/");
@@ -39,11 +38,12 @@ const UserDetail = () => {
     };
 
     useEffect(() => {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
         const foundUser = users.find(user => user.id === parseInt(userId));
         if (foundUser) {
             setUpdatedUser(foundUser);
         }
-    }, [userId, users]);
+    }, [userId]);
 
     if (!updatedUser) return <div>사용자를 찾을 수 없습니다.</div>;
 
@@ -54,7 +54,6 @@ const UserDetail = () => {
 
                 <div>
                     <span>이름 : </span>
-                    {/* Use value instead of defaultValue and add name attribute */}
                     <input name="name" value={updatedUser.name} onChange={handleChange} />
                 </div>
                 <div>

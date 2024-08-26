@@ -1,12 +1,10 @@
 // UserInfoList.jsx
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../hooks/useUserInfo";
 
 const UserInfoList = () => {
-    const { users } = useContext(UserContext);
-
+    const users = JSON.parse(localStorage.getItem("users")) || [];
     const navigate = useNavigate();
     const handleMovePage = () => {
         navigate("/userInfo/add");
