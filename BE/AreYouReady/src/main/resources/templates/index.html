@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Travel Plans</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+</head>
+<body>
+<div class="navbar">
+    <div>
+    <div class="navTitleWrapper">
+        <div>
+            <a href="/" id="navTitle"> 🚌  &nbsp; AREYOUREADY </a>
+        <img id="arrow_img" src="/images/arrow.png" alt="arrow" />
+        </div>
+        <a href="/item/add">
+        <img id="write_img" src="/images/write.png" alt="write"  /></a>
+    </div>
+
+    <div class="navbarContentWrapper">
+        <div class="navContent">
+            <img id="search_img" src="/images/search.png" alt="search" /> &emsp; <span class="navText"> Search </span>
+        </div>
+        <div class="navContent">
+            <img id="home_img" src="/images/home.png" alt="home" /> &emsp; <span class="navText">Home </span>
+        </div>
+        <div class="navContent">
+            <img id="inbox_img" src="/images/inbox.png" alt="inbox" /> &emsp;<span class="navText">Inbox </span>
+        </div>
+        <div class="navContent">
+            <img id="settings_img" src="/images/settings.png" alt="settings" /> &emsp; <span class="navText"> Settings </span>
+        </div>
+    </div>
+        <div class="navbarContentWrapper">
+            <span id="privateText">Private</span>
+            <div class="navContent">
+                <img id="plus_img" src="/images/plus.png" alt="plus" /> &emsp; <span class="navText"> Add a page </span>
+            </div>
+
+            <div class="plusThingsWrapper">
+                <div class="navContent">
+                    <img id="trash_img" src="/images/trash.png" alt="trash" /> &emsp; <span class="navText"> Trash </span>
+                </div>
+                <div class="navContent">
+                    <img id="question_img" src="/images/question.png" alt="question" /> &emsp;  <span class="navText"> Help & support </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navfoot">
+        <img id="upgrade_img" src="/images/upgrade.png" alt="upgrade"/>
+        <span>
+            Upgrade plan
+        </span>
+
+    </div>
+
+</div>
+<div class="wrapper">
+<!--    <div style="display: flex">-->
+    <div class="emptyBox"></div>
+        <div style="width: 100%">
+<div class="header">
+
+    <div class="titleWrapper">
+        <div class="leftTitleWrapper">
+            🏠 &nbsp;전체&nbsp; / &nbsp;✈️&nbsp; Travel Plan
+        </div>
+
+        <div class="rightTitleWrapper">
+            <span class="navText">Share</span>
+            <img id="comment_img" src="/images/comments.png" alt="comments"/>
+            <img id="time_img" src="/images/date.png" alt="date"/>
+            <img id="star_img" src="/images/star.png" alt="star"/>
+            <img id="dot_img" src="/images/dot.png" alt="dot"/>
+        </div>
+    </div>
+</div>
+
+<div class="mainWrapper">
+    <div class="banner">
+        <img class="banner" src="/images/banner2.gif" alt="banner">
+    </div>
+    <div class="contentWrapper">
+        <span role="img" class="planeWrapper">
+        <img src="/images/plane.png" alt="plane" class="plane_image"/>
+        </span>
+        <div class="content">
+
+            <div class="homeTitleWrapper">
+                <span id="homeTitle"> Travel Plan</span>
+<!--                ✈️-->
+            </div>
+        </div>
+<table>
+    <tr>
+        <th>
+            <div class="categoryContent">
+                <img id="activity_img" src="/images/activity.png" alt="activity"/><span class="categoryText">Activity</span>
+            </div>
+        </th>
+        <th>
+            <div class="categoryContent">
+                <img id="location_img" src="/images/location.png" alt="location"/><span class="categoryText">Location</span>
+            </div>
+        </th>
+        <th>
+            <div class="categoryContent">
+                <img id="date_img" src="/images/date.png" alt="date"/><span class="categoryText">Date</span>
+            </div>
+        </th>
+        <th>
+            <div class="categoryContent">
+                <img id="person_img" src="/images/person.png" alt="date"/><span class="categoryText">Person</span>
+            </div>
+        </th>
+    </tr>
+
+    <tr th:each="plan : ${travelPlan}">
+<!--        <td th:text="${plan.travel_id}"></td>-->
+
+<!--            <a th:href="@{/item/edit/{id}(id=${plan.travel_id})}"/> </td>-->
+        <td class="contentText" th:text="${plan.travel_activity}" ></td>
+        <td class="contentText" th:text="${plan.travel_location}">
+        <td class="contentText" th:text="${plan.travel_date}">
+        <td class="contentText"   th:if="${plan.travel_withPerson != null }">
+            <div id="personWrapper">
+                <span id="circle"> </span>
+                <span th:text="${plan.travel_withPerson}"></span>
+            </div>
+        </td>
+<!--        <td th:text="${plan.travel_detail}"></td>-->
+        <td>
+            <div class="update">
+                <a th:href="@{/item/edit/{id}(id=${plan.travel_id})}"><img class="edit_img" id="btn-modal" src="/images/edit.png" alt="edit"/></a>
+<!--                th:href="@{/item/edit/{id}(id=${plan.travel_id})}"-->
+                <a th:href="@{/delete/{id}(id=${plan.travel_id})}"> <img class="delete_img" src="/images/delete.png" alt="delete" /></a>
+            </div>
+        </td>
+    </tr>
+
+</table>
+            <div class="createWrapper">
+                <a href="/item/add" id="create"> + New</a>
+            </div>
+    </div>
+    </div>
+</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+.fullwrapper {
+    width: 100%;
+    display: flex;
+}
+
+.valuesWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+}
+
+.valuesBox {
+    width: 700px;
+    height: 1200px;
+    /*border: 1px solid rebeccapurple;*/
+}
+
+.titleBox {
+    width: 100%;
+    height: 80px;
+    margin-top: 70px;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.infoBox {
+    /*border: 1px solid blue;*/
+    display: flex;
+    padding: 0 20px 30px 20px;
+    margin-bottom: 30px;
+    border-bottom: 0.3px solid #3b3b3b;
+
+}
+
+.info {
+    width: 160px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*border: 1px solid white;*/
+    padding: 6px 0 6px 10px;
+
+}
+
+.value {
+    width: 293px;
+    height: 34px;
+}
+
+.detailBox{
+    /*border: 1px solid white;*/
+
+}
+
+.inputStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    font-size: 15px;
+    color: #dddddd;
+    width: 100%;
+    border: none;
+    /*margin-bottom: 10px;*/
+    position: relative;
+    background-color: #252525;
+    z-index: 5;
+    padding: 6px 0 6px 10px;
+}
+
+
+/*input:hover{*/
+/*    background-color: #666666;*/
+/*    border-radius: 3px;*/
+/*}*/
+
+#travel_activity {
+    font-size: 44px;
+    font-weight: bold;
+}
+
+#travel_detail {
+    outline: none;
+    resize: none;
+    width: 640px;
+    height: 400px;
+    font-weight: normal;
+    font-size: 16px;
+    color: white;
+    padding: 20px 30px;
+    border: none;
+    background-color: #323232;
+}
+
+input::placeholder { color: #666666; }
+
+input:focus { outline: none; }
+
+input:focus ~ label, input:valid ~ label {
+    font-size: 16px;
+    bottom: 40px;
+    color: #666;
+    font-weight: bold;
+}
+
+input:focus ~ span, input:valid ~ span {
+    width: 100%;
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+#updateBtn {
+    border: none;
+    background-color: #666666;
+    border-radius: 30px;
+    width: 70px;
+    height: 23px;
+    cursor: pointer;
+}
+
+input[type='date'] {
+    border: none;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background: none;
+    color: #666666;
+    font-size: 100%;
+    filter: invert();
+
+}
+   input[type='date']::-webkit-calendar-picker-indicator {
+       position: absolute;
+       left: 0;
+       top: 0;
+       width: 100%;
+       height: 100%;
+       background: transparent;
+       color: transparent;
+       cursor: pointer;
+   }
+
+   input[type='date']::before {
+       content: attr(placeholder);
+       width: 100%;
+       height: 100%;
+   }
+   input[type='date']:valid::before {
+       display: none;
+   }

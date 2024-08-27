@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Travel Plan</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/edit.css}">
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="emptyBox"> </div>
+  <div class="navbar">
+    <div>
+      <div class="navTitleWrapper">
+        <div>
+          <a href="/" id="navTitle"> 🚌  &nbsp; AREYOUREADY </a>
+          <img id="arrow_img" src="/images/arrow.png" alt="arrow" />
+        </div>
+        <a href="/item/add">
+          <img id="write_img" src="/images/write.png" alt="write"  /></a>
+      </div>
+
+      <div class="navbarContentWrapper">
+        <div class="navContent">
+          <img id="search_img" src="/images/search.png" alt="search" /> &emsp; <span class="navText"> Search </span>
+        </div>
+        <div class="navContent">
+          <img id="home_img" src="/images/home.png" alt="home" /> &emsp;  <span class="navText">Home </span>
+        </div>
+        <div class="navContent">
+          <img id="inbox_img" src="/images/inbox.png" alt="inbox" /> &emsp; <span class="navText">Inbox </span>
+        </div>
+        <div class="navContent">
+          <img id="settings_img" src="/images/settings.png" alt="settings" /> &emsp;  <span class="navText"> Settings </span>
+        </div>
+      </div>
+      <div class="navbarContentWrapper">
+        <span id="privateText">Private</span>
+        <div class="navContent">
+          <img id="plus_img" src="/images/plus.png" alt="plus" /> &emsp;  <span class="navText"> Add a page </span>
+        </div>
+
+        <div class="plusThingsWrapper">
+          <div class="navContent">
+            <img id="trash_img" src="/images/trash.png" alt="trash" /> &emsp;  <span class="navText">Trash </span>
+          </div>
+          <div class="navContent">
+            <img id="question_img" src="/images/question.png" alt="question" /> &emsp; <span class="navText">Help & support </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navfoot">
+      <img id="upgrade_img" src="/images/upgrade.png" alt="upgrade"/>
+      <span>
+            Upgrade plan
+        </span>
+
+    </div>
+
+  </div>
+<div class="mainWrapper">
+  <div class="header">
+
+    <div class="titleWrapper">
+      <div class="leftTitleWrapper">
+        🏠 &nbsp;전체&nbsp; / &nbsp;✈️&nbsp; Travel Plan
+      </div>
+
+      <div class="rightTitleWrapper">
+        <span class="navText">Share</span>
+        <img id="comment_img" src="/images/comments.png" alt="comments"/>
+        <img id="time_img" src="/images/date.png" alt="date"/>
+        <img id="star_img" src="/images/star.png" alt="star"/>
+        <img id="dot_img" src="/images/dot.png" alt="dot"/>
+      </div>
+    </div>
+  </div>
+  <div class="fullwrapper">
+
+
+
+  <div class="valuesWrapper">
+    <div class="valuesBox">
+      <form action="/save" method="post" th:object="${travelPlan}">
+        <div class="titleBox">
+          <input type="text" id="travel_activity" th:field="*{travel_activity}" maxlength="45" required placeholder="제목을 입력하세요">
+        </div>
+        <div class="infoBox">
+          <div class="info">
+            <input type="hidden" th:field="*{travel_id}">
+            <div class="categoryContent">
+              <img id="location_img" src="/images/location.png" alt="location"/><span class="categoryText">Location</span>
+            </div>
+            <div class="categoryContent">
+              <img id="date_img" src="/images/date.png" alt="date"/><span class="categoryText">Date</span>
+            </div>
+            <div class="categoryContent">
+              <img id="person_img" src="/images/person.png" alt="date"/><span class="categoryText">Person</span>
+            </div>
+            <div class="categoryContent">
+              <img id="addProperty" src="/images/plus.png" alt="add"/><span class="categoryText"> Add a property</span>
+            </div>
+          </div>
+          <div class="value">
+            <div class="inputStyle">
+              <input type="text" id="travel_location" th:field="*{travel_location}" maxlength="45" required placeholder="여행지의 위치를 입력하세요">
+            </div>
+
+            <div class="inputStyle">
+              <!--        <input type="date" id="travel_date" th:field="*{travel_date}" th:value="${travelPlan.travel_date}"  required>-->
+              <input
+                      id="travel_date"
+                      type="date"
+                      required
+                      th:field="*{travel_date}"
+                      th:value="${travelPlan.travel_date}"
+                      aria-required="true"
+              />
+            </div>
+
+            <div class="inputStyle">
+              <input type="text" id="travel_withPerson" th:field="*{travel_withPerson}" maxlength="45" placeholder="여행에 함께 할 동행자를 입력하세요">
+            </div>
+          </div>
+        </div>
+
+        <div class="detailBox">
+          <textarea id="travel_detail" th:field="*{travel_detail}" maxlength="5000" placeholder="내용을 입력하세요." ></textarea>
+        </div>
+        <div class="buttonWrapper">
+          <button type="submit" id="updateBtn">Save</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  </div>
+  </div>
+</div>
+</body>
+</html>

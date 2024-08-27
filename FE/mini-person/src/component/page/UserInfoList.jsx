@@ -22,6 +22,7 @@ const UserInfoList = () => {
         <>
             <div>
                 <h2>사용자 목록</h2>
+
                 <ul>
                     {users.map(user => (
                         <li key={user.id} onClick={() => handleUserClick(user.id)}>
